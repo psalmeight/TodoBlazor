@@ -1,0 +1,59 @@
+﻿@page "/todolist"
+
+@using TodoBlazor.Data
+@inject TodoRowService TodoService
+
+
+@if (todoList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <input type="text" @onkeyup="AddToRow" @bind="inputValue" />
+    <table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Text</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in todoList)
+            {
+                <tr>
+                    <td>@todo.Id</td>
+                    <td>@todo.Status</td>
+                    <td>@todo.Text</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private string inputValue;
+    private List<TodoRow> todoList;
+
+    protected override async Task<List<TodoRow>> OnInitializedAsync()
+    {
+        todoList = await TodoService.GetTodoRows();
+
+        return new();
+    }
+
+    public void AddToRow(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            if (!string.IsNullOrWhiteSpace(inputValue))
+            {
+                TodoService.AddToRow(todoList, new TodoRow(todoList.Count + 1, "pending", inputValue));
+                inputValue = string.Empty;
+            }
+        }
+    }
+
+}
