@@ -1,6 +1,4 @@
-﻿@page "/todolist"
-
-@using TodoBlazor.Data
+﻿@using TodoBlazor.Data
 @inject TodoRowService TodoService
 
 
@@ -50,7 +48,7 @@ else
         {
             if (!string.IsNullOrWhiteSpace(inputValue))
             {
-                TodoService.AddToRow(todoList, new TodoRow(todoList.Count + 1, "pending", inputValue));
+                todoList.Add(new TodoRow(todoList.Count + 1, "pending", inputValue));
                 inputValue = string.Empty;
             }
         }

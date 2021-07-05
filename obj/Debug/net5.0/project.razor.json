@@ -45,68 +45,35 @@
         }
       },
       {
-        "HashCode": 1844064084,
+        "HashCode": -1377931604,
         "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.Counter",
+        "Name": "TodoBlazor.Pages.TodoSection",
         "AssemblyName": "TodoBlazor",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "Counter"
+            "TagName": "TodoSection"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.Counter"
+          "Common.TypeName": "TodoBlazor.Pages.TodoSection"
         }
       },
       {
-        "HashCode": 429234281,
+        "HashCode": -851122123,
         "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.Counter",
+        "Name": "TodoBlazor.Pages.TodoSection",
         "AssemblyName": "TodoBlazor",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TodoBlazor.Pages.Counter"
+            "TagName": "TodoBlazor.Pages.TodoSection"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -789480384,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.FetchData",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 1066488769,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.FetchData",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoBlazor.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.FetchData",
+          "Common.TypeName": "TodoBlazor.Pages.TodoSection",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -256,39 +223,6 @@
           "Runtime.Name": "Components.None",
           "Common.TypeName": "TodoBlazor.Shared.MainLayout.Body",
           "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1494221570,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Shared.NavMenu",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Shared.NavMenu"
-        }
-      },
-      {
-        "HashCode": -485054099,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Shared.NavMenu",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoBlazor.Shared.NavMenu"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Shared.NavMenu",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -15938,18 +15872,13 @@
       "FileKind": "component"
     },
     {
-      "FilePath": "/Users/acejordan/Projects/TodoBlazor/Pages/FetchData.razor",
-      "TargetPath": "Pages\\FetchData.razor",
-      "FileKind": "component"
-    },
-    {
       "FilePath": "/Users/acejordan/Projects/TodoBlazor/Pages/Error.cshtml",
       "TargetPath": "Pages\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "/Users/acejordan/Projects/TodoBlazor/Pages/Counter.razor",
-      "TargetPath": "Pages\\Counter.razor",
+      "FilePath": "/Users/acejordan/Projects/TodoBlazor/Pages/TodoSection.razor",
+      "TargetPath": "Pages\\TodoSection.razor",
       "FileKind": "component"
     },
     {
@@ -15971,11 +15900,6 @@
       "FilePath": "/Users/acejordan/Projects/TodoBlazor/_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
-    },
-    {
-      "FilePath": "/Users/acejordan/Projects/TodoBlazor/Shared/NavMenu.razor",
-      "TargetPath": "Shared\\NavMenu.razor",
-      "FileKind": "component"
     },
     {
       "FilePath": "/Users/acejordan/Projects/TodoBlazor/Shared/MainLayout.razor",
