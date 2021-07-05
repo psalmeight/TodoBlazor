@@ -12,39 +12,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": 497602807,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.Index",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -660209986,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.Index",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoBlazor.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1377931604,
         "Kind": "Components.Component",
         "Name": "TodoBlazor.Pages.TodoSection",
@@ -78,55 +45,68 @@
         }
       },
       {
-        "HashCode": 1877925959,
+        "HashCode": 497602807,
         "Kind": "Components.Component",
-        "Name": "TodoBlazor.Shared.SurveyPrompt",
+        "Name": "TodoBlazor.Pages.Index",
         "AssemblyName": "TodoBlazor",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "Index"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Shared.SurveyPrompt"
+          "Common.TypeName": "TodoBlazor.Pages.Index"
         }
       },
       {
-        "HashCode": -839897640,
+        "HashCode": -660209986,
         "Kind": "Components.Component",
-        "Name": "TodoBlazor.Shared.SurveyPrompt",
+        "Name": "TodoBlazor.Pages.Index",
         "AssemblyName": "TodoBlazor",
         "CaseSensitive": true,
         "TagMatchingRules": [
           {
-            "TagName": "TodoBlazor.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
+            "TagName": "TodoBlazor.Pages.Index"
           }
         ],
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Shared.SurveyPrompt",
+          "Common.TypeName": "TodoBlazor.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 111948585,
+        "Kind": "Components.Component",
+        "Name": "TodoBlazor.App",
+        "AssemblyName": "TodoBlazor",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TodoBlazor.App"
+        }
+      },
+      {
+        "HashCode": -1844952015,
+        "Kind": "Components.Component",
+        "Name": "TodoBlazor.App",
+        "AssemblyName": "TodoBlazor",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TodoBlazor.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TodoBlazor.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -223,39 +203,6 @@
           "Runtime.Name": "Components.None",
           "Common.TypeName": "TodoBlazor.Shared.MainLayout.Body",
           "Components.IsSpecialKind": "Components.ChildContent",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 111948585,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.App",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.App"
-        }
-      },
-      {
-        "HashCode": -1844952015,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.App",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoBlazor.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.App",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -15879,11 +15826,6 @@
     {
       "FilePath": "/Users/acejordan/Projects/TodoBlazor/Pages/TodoSection.razor",
       "TargetPath": "Pages\\TodoSection.razor",
-      "FileKind": "component"
-    },
-    {
-      "FilePath": "/Users/acejordan/Projects/TodoBlazor/Shared/SurveyPrompt.razor",
-      "TargetPath": "Shared\\SurveyPrompt.razor",
       "FileKind": "component"
     },
     {
