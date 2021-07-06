@@ -9,11 +9,5 @@ namespace TodoBlazor.Data
         public string CurrentText { get; set; }
 
         public AppState() { }
-        public AppState(int PendingCount, string Filter, string CurrentText)
-        {
-            this.PendingCount = PendingCount;
-            this.Filter = Filter;
-            this.CurrentText = CurrentText;
-        }
     }
 }

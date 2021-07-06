@@ -1,5 +1,4 @@
-﻿@using System.Collections.ObjectModel;
-@using TodoBlazor.Data
+﻿@using TodoBlazor.Data
 @inject TodoRowService TodoService
 
 @if (todoList == null)
@@ -13,36 +12,25 @@ else
     @foreach (var todo in FilteredTodoList())
     {
         <div class="todo-row">
-            <input type="checkbox" @onchange="eA => { OnCheck(todo.Id, eA.Value); }" checked="@(todo.Status == "complete")"/>
+            <input type="checkbox" @onchange="eventArg => { OnCheck(todo.Id, eventArg.Value); }" checked="@(todo.Status == "complete")"/>
             <div style="@Validate(todo.Status)">
                 @todo.Text
             </div>
         </div>
     }
 
-<div class="todo-footer">
+    <div class="todo-footer">
 
-    <h2>@appState.PendingCount item left</h2>
+        <h2>@appState.PendingCount item left</h2>
 
-    @*{todoList.length > 0 ? (
-            <>
-        <span>{state?.pendingCount} item left</span>{" "}
-        <div>{["all", "active", "complete"].map(renderFilter)}</div>
-            </>
-            ) : null}
+        @foreach (var filter in filters)
+        {
+            <button @onclick="() => OnFilterSelected(filter)">@filter</button>
+        }
 
+        <button @onclick="ClearCompleted">Clear Completed</button>
 
-            {/* Clear completed button */}
-            {todoList.filter((todo) => todo.status === TodoStatus.COMPLETE).length >
-            0 ? (
-        <button onClick={clearCompleted}>Clear Completed</button>
-            ) : null}*@
-
-    @foreach (var filter in filters)
-    {
-        <button @onclick="() => OnFilterSelected(filter)">@filter</button>
-    }
-</div>
+    </div>
 }
 
 @code {
@@ -51,10 +39,9 @@ else
     private List<TodoRow> todoList;
 
     string[] filters = { "all", "active", "completed" };
-
     private string inputValue;
 
-    protected override async Task<ObservableCollection<TodoRow>> OnInitializedAsync()
+    protected override async Task<List<TodoRow>> OnInitializedAsync()
     {
         todoList = await TodoService.GetObservableRows();
 
@@ -111,6 +98,11 @@ else
             return todoList.Where(x => x.Status == "complete").ToList();
 
         return todoList.ToList();
+    }
+
+    public void ClearCompleted()
+    {
+        todoList = todoList.Where(x => x.Status == "pending").ToList();
     }
 
 }
