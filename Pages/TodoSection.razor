@@ -1,6 +1,6 @@
-﻿@using TodoBlazor.Data
+﻿@using System.Collections.ObjectModel;
+@using TodoBlazor.Data
 @inject TodoRowService TodoService
-
 
 @if (todoList == null)
 {
@@ -9,37 +9,68 @@
 else
 {
     <input type="text" @onkeyup="AddToRow" @bind="inputValue" />
-    <table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Status</th>
-            <th>Text</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var todo in todoList)
-            {
-                <tr>
-                    <td>@todo.Id</td>
-                    <td>@todo.Status</td>
-                    <td>@todo.Text</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+
+    @foreach (var todo in FilteredTodoList())
+    {
+        <div class="todo-row">
+            <input type="checkbox" @onchange="eA => { OnCheck(todo.Id, eA.Value); }" checked="@(todo.Status == "complete")"/>
+            <div style="@Validate(todo.Status)">
+                @todo.Text
+            </div>
+        </div>
+    }
+
+<div class="todo-footer">
+
+    <h2>@appState.PendingCount item left</h2>
+
+    @*{todoList.length > 0 ? (
+            <>
+        <span>{state?.pendingCount} item left</span>{" "}
+        <div>{["all", "active", "complete"].map(renderFilter)}</div>
+            </>
+            ) : null}
+
+
+            {/* Clear completed button */}
+            {todoList.filter((todo) => todo.status === TodoStatus.COMPLETE).length >
+            0 ? (
+        <button onClick={clearCompleted}>Clear Completed</button>
+            ) : null}*@
+
+    @foreach (var filter in filters)
+    {
+        <button @onclick="() => OnFilterSelected(filter)">@filter</button>
+    }
+</div>
 }
 
 @code {
 
-    private string inputValue;
+    private AppState appState = new AppState();
     private List<TodoRow> todoList;
 
-    protected override async Task<List<TodoRow>> OnInitializedAsync()
+    string[] filters = { "all", "active", "completed" };
+
+    private string inputValue;
+
+    protected override async Task<ObservableCollection<TodoRow>> OnInitializedAsync()
     {
-        todoList = await TodoService.GetTodoRows();
+        todoList = await TodoService.GetObservableRows();
+
+        appState.PendingCount = todoList.Count();
+        appState.Filter = "all";
+        appState.CurrentText = "";
 
         return new();
+    }
+
+    public string Validate(string status)
+    {
+        if (status == "complete")
+            return "text-decoration: line-through";
+
+        return "text-decoration: none";
     }
 
     public void AddToRow(KeyboardEventArgs e)
@@ -52,6 +83,34 @@ else
                 inputValue = string.Empty;
             }
         }
+    }
+
+    public void OnCheck(int Id, object Checked)
+    {
+        todoList.ToList<TodoRow>().ForEach(delegate (TodoRow todo)
+        {
+            if (todo.Id == Id)
+            {
+                todo.Status = (bool)Checked ? "complete" : "pending";
+            }
+        });
+
+        appState.PendingCount = todoList.Where(x => x.Status == "pending").Count();
+    }
+
+    public void OnFilterSelected(string filter)
+    {
+        appState.Filter = filter;
+    }
+
+    public List<TodoRow> FilteredTodoList()
+    {
+        if (appState.Filter == "active")
+            return todoList.Where(x => x.Status == "pending").ToList();
+        else if (appState.Filter == "completed")
+            return todoList.Where(x => x.Status == "complete").ToList();
+
+        return todoList.ToList();
     }
 
 }

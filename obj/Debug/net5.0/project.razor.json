@@ -12,39 +12,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -1377931604,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.TodoSection",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoSection"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.TodoSection"
-        }
-      },
-      {
-        "HashCode": -851122123,
-        "Kind": "Components.Component",
-        "Name": "TodoBlazor.Pages.TodoSection",
-        "AssemblyName": "TodoBlazor",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "TodoBlazor.Pages.TodoSection"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "TodoBlazor.Pages.TodoSection",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": 497602807,
         "Kind": "Components.Component",
         "Name": "TodoBlazor.Pages.Index",
@@ -74,6 +41,39 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "TodoBlazor.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1377931604,
+        "Kind": "Components.Component",
+        "Name": "TodoBlazor.Pages.TodoSection",
+        "AssemblyName": "TodoBlazor",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TodoSection"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TodoBlazor.Pages.TodoSection"
+        }
+      },
+      {
+        "HashCode": -851122123,
+        "Kind": "Components.Component",
+        "Name": "TodoBlazor.Pages.TodoSection",
+        "AssemblyName": "TodoBlazor",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TodoBlazor.Pages.TodoSection"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "TodoBlazor.Pages.TodoSection",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
