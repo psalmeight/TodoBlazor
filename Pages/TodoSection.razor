@@ -1,37 +1,48 @@
 ﻿@using TodoBlazor.Data
 @inject TodoRowService TodoService
 
-@if (todoList == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <input type="text" @onkeyup="AddToRow" @bind="inputValue" />
+<div class="todo-container">
+    <div class="todo-input">
+        <div class="toggle-icon">❯</div>
+        <input
+            placeholder="What needs to be done?"
+            @onkeyup="AddToRow"
+            @bind="inputValue"
+        />
+    </div>
 
     @foreach (var todo in FilteredTodoList())
     {
         <div class="todo-row">
-            <input type="checkbox" @onchange="eventArg => { OnCheck(todo.Id, eventArg.Value); }" checked="@(todo.Status == "complete")"/>
-            <div style="@Validate(todo.Status)">
+            <div class="round">
+                <input type="checkbox" id=@("checkbox-" + todo.id) @onchange="eventArg => { OnCheck(todo.Id, eventArg.Value); }" checked="@(todo.Status == "complete")" />
+                <label htmlFor=@("checkbox-" + todo.id)></label>
+            </div>
+
+            <div class="@ValidateStatus(todo.Status) "style="@Validate(todo.Status)">
                 @todo.Text
             </div>
         </div>
     }
 
-    <div class="todo-footer">
-
-        <h2>@appState.PendingCount item left</h2>
-
+<div class="todo-footer">
+    <div class="todo-footer-left">
+        <label>@appState.PendingCount item left</label>
+    </div>
+    <div class="todo-footer-center">
         @foreach (var filter in filters)
         {
             <button @onclick="() => OnFilterSelected(filter)">@filter</button>
         }
-
-        <button @onclick="ClearCompleted">Clear Completed</button>
+    </div>
+    <div class="todo-footer-right">
+    <button @onclick="ClearCompleted">Clear Completed</button>
+    </div>
+   
+</div>
 
     </div>
-}
+
 
 @code {
 
@@ -58,6 +69,14 @@ else
             return "text-decoration: line-through";
 
         return "text-decoration: none";
+    }
+
+    public string ValidateStatus(string status)
+    {
+        if (status == "complete")
+            return "todo-text-complete";
+
+        return "todo-text";
     }
 
     public void AddToRow(KeyboardEventArgs e)

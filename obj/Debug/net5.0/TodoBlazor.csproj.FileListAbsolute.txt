@@ -48,3 +48,4 @@
 /Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/TodoBlazor.csproj.CopyComplete
 /Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/RazorDeclaration/Pages/TodoSection.razor.g.cs
 /Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/Razor/Pages/TodoSection.razor.g.cs
+/Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/scopedcss/Pages/Index.razor.rz.scp.css
