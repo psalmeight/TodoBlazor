@@ -3,7 +3,7 @@
 
 <div class="todo-container">
     <div class="todo-input">
-        <div class="toggle-icon">❯</div>
+        <div class="@(appState.AllCompleted ? "toggle-icon toggle-icon-active" : "toggle-icon")" @onclick="ToggleComplete">❯</div>
         <input
             placeholder="What needs to be done?"
             @onkeyup="AddToRow"
@@ -36,7 +36,7 @@
         }
     </div>
     <div class="todo-footer-right">
-    <button class="todo-clear-btn" @onclick="ClearCompleted">Clear Completed</button>
+        <button class="todo-clear-btn" @onclick="ClearCompleted">Clear Completed</button>
     </div>
    
 </div>
@@ -59,6 +59,7 @@
         appState.PendingCount = todoList.Count();
         appState.Filter = "all";
         appState.CurrentText = "";
+        appState.AllCompleted = false;
 
         return new();
     }
@@ -101,7 +102,15 @@
             }
         });
 
-        appState.PendingCount = todoList.Where(x => x.Status == "pending").Count();
+        UpdateVars();
+    }
+
+    public void UpdateVars()
+    {
+        int pendingCount = todoList.Where(x => x.Status == "pending").Count();
+
+        appState.PendingCount = pendingCount;
+        appState.AllCompleted = pendingCount == 0;
     }
 
     public void OnFilterSelected(string filter)
@@ -122,6 +131,16 @@
     public void ClearCompleted()
     {
         todoList = todoList.Where(x => x.Status == "pending").ToList();
+    }
+
+    public void ToggleComplete()
+    {
+        todoList.ToList<TodoRow>().ForEach(delegate (TodoRow todo)
+        {
+            todo.Status = appState.AllCompleted ? "pending" : "completed";
+        });
+
+        UpdateVars();
     }
 
 }

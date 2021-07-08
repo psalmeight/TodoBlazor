@@ -7,6 +7,7 @@ namespace TodoBlazor.Data
         public int PendingCount { get; set; }
         public string Filter { get; set; }
         public string CurrentText { get; set; }
+        public bool AllCompleted { get; set; }
 
         public AppState() { }
     }
