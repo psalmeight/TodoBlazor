@@ -4,10 +4,7 @@
 <div class="todo-container">
     <div class="todo-input">
         <div class="@(appState.AllCompleted ? "toggle-icon toggle-icon-active" : "toggle-icon")" @onclick="ToggleComplete">
-            @if (todoList.Count() > 0)
-            {
-                @("❯")
-            }
+                @(todoList.Count() > 0 ? "❯" : null)
         </div>
         <input placeholder="What needs to be done?"
                @onkeyup="AddToRow"
@@ -25,6 +22,7 @@
     <div class="@ValidateStatus(todo.Status) " style="@Validate(todo.Status)">
         @todo.Text
     </div>
+    <button class="toggle-remove" @onclick="() => OnDelete(todo.Id)">×</button>
 </div>}
 
     @if (todoList.Count() > 0)
@@ -112,6 +110,11 @@
         });
 
         UpdateVars();
+    }
+
+    public void OnDelete(int Id)
+    {
+        todoList.Remove(todoList.Single(x => x.Id == Id));
     }
 
     public void UpdateVars()
