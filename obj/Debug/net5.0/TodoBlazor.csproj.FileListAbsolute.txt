@@ -49,3 +49,13 @@
 /Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/RazorDeclaration/Pages/TodoSection.razor.g.cs
 /Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/Razor/Pages/TodoSection.razor.g.cs
 /Users/acejordan/Projects/TodoBlazor/obj/Debug/net5.0/scopedcss/Pages/Index.razor.rz.scp.css
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Blazored.LocalStorage.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Bunit.Core.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.AspNetCore.Authorization.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.AspNetCore.Components.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.AspNetCore.Components.Forms.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.AspNetCore.Components.Web.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.AspNetCore.Metadata.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.Extensions.DependencyInjection.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/Microsoft.JSInterop.dll
+/Users/acejordan/Projects/TodoBlazor/bin/Debug/net5.0/System.IO.Pipelines.dll
