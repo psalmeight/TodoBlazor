@@ -4,7 +4,7 @@
 <div class="todo-container">
     <div class="todo-input">
         <div class="@(appState.AllCompleted ? "toggle-icon toggle-icon-active" : "toggle-icon")" @onclick="ToggleComplete">
-                @(todoList.Count() > 0 ? "❯" : null)
+            @(todoList.Count() > 0 ? "❯" : null)
         </div>
         <input placeholder="What needs to be done?"
                @onkeyup="AddToRow"
@@ -13,17 +13,18 @@
 
     @foreach (var todo in FilteredTodoList())
     {
-<div class="todo-row">
-    <div class="round">
-        <input type="checkbox" id=@("checkbox-" + todo.id) @onchange="eventArg => { OnCheck(todo.Id, eventArg.Value); }" checked="@(todo.Status == "completed")" />
-        <label for=@("checkbox-" + todo.id)></label>
-    </div>
+        <div class="todo-row">
+            <div class="round">
+                <input type="checkbox" id=@("checkbox-" + todo.id) @onchange="eventArg => { OnCheck(todo.Id, eventArg.Value); }" checked="@(todo.Status == "completed")" />
+                <label for=@("checkbox-" + todo.id)></label>
+            </div>
 
-    <div class="@ValidateStatus(todo.Status) " style="@Validate(todo.Status)">
-        @todo.Text
-    </div>
-    <button class="toggle-remove" @onclick="() => OnDelete(todo.Id)">×</button>
-</div>}
+            <div class="@ValidateStatus(todo.Status) " style="@Validate(todo.Status)">
+                @todo.Text
+            </div>
+            <button class="toggle-remove" @onclick="() => OnDelete(todo.Id)">×</button>
+        </div>
+    }
 
     @if (todoList.Count() > 0)
     {
@@ -34,14 +35,16 @@
             <div class="todo-footer-center">
                 @foreach (var filter in filters)
                 {
-<button class="@(appState.Filter == filter ? "todo-filter-btn-selected" : "todo-filter-btn")" @onclick="() => OnFilterSelected(filter)">@filter</button>}
+                    <button class="@(appState.Filter == filter ? "todo-filter-btn-selected" : "todo-filter-btn")" @onclick="() => OnFilterSelected(filter)">@filter</button>
+                }
             </div>
+
             <div class="todo-footer-right">
                 @if (appState.PendingCount < todoList.Count())
                 {
-<button class="todo-clear-btn" @onclick="ClearCompleted">Clear Completed</button>}
+                    <button class="todo-clear-btn" @onclick="ClearCompleted">Clear Completed</button>
+                }
             </div>
-
         </div>
     }
 
@@ -49,110 +52,106 @@
 </div>
 
 
-@code {
+@code { private AppState appState = new AppState();
+            private List<TodoRow> todoList;
 
-    private AppState appState = new AppState();
-    private List<TodoRow> todoList;
+            string[] filters = { "all", "active", "completed" };
+            private string inputValue;
 
-    string[] filters = { "all", "active", "completed" };
-    private string inputValue;
-
-    protected override async Task<List<TodoRow>> OnInitializedAsync()
-    {
-        todoList = await TodoService.GetObservableRows();
-
-        appState.PendingCount = todoList.Count();
-        appState.Filter = "all";
-        appState.CurrentText = "";
-        appState.AllCompleted = false;
-
-        return new();
-    }
-
-    public string Validate(string status)
-    {
-        if (status == "completed")
-            return "text-decoration: line-through";
-
-        return "text-decoration: none";
-    }
-
-    public string ValidateStatus(string status)
-    {
-        if (status == "completed")
-            return "todo-text-complete";
-
-        return "todo-text";
-    }
-
-    public void AddToRow(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            if (!string.IsNullOrWhiteSpace(inputValue))
+            protected override async Task<List<TodoRow>> OnInitializedAsync()
             {
-                todoList.Add(new TodoRow(todoList.Count + 1, "pending", inputValue));
-                inputValue = string.Empty;
+                todoList = await TodoService.GetObservableRows();
+
+                appState.PendingCount = todoList.Count();
+                appState.Filter = "all";
+                appState.CurrentText = "";
+                appState.AllCompleted = false;
+
+                return new();
             }
 
-            UpdateVars();
-        }
-    }
-
-    public void OnCheck(int Id, object Checked)
-    {
-        todoList.ToList<TodoRow>().ForEach(delegate (TodoRow todo)
-        {
-            if (todo.Id == Id)
+            public string Validate(string status)
             {
-                todo.Status = (bool)Checked ? "completed" : "pending";
+                if (status == "completed")
+                    return "text-decoration: line-through";
+
+                return "text-decoration: none";
             }
-        });
 
-        UpdateVars();
-    }
+            public string ValidateStatus(string status)
+            {
+                if (status == "completed")
+                    return "todo-text-complete";
 
-    public void OnDelete(int Id)
-    {
-        todoList.Remove(todoList.Single(x => x.Id == Id));
-    }
+                return "todo-text";
+            }
 
-    public void UpdateVars()
-    {
-        int pendingCount = todoList.Where(x => x.Status == "pending").Count();
+            public void AddToRow(KeyboardEventArgs e)
+            {
+                if (e.Key == "Enter")
+                {
+                    if (!string.IsNullOrWhiteSpace(inputValue))
+                    {
+                        todoList.Add(new TodoRow(todoList.Count + 1, "pending", inputValue));
+                        inputValue = string.Empty;
+                    }
 
-        appState.PendingCount = pendingCount;
-        appState.AllCompleted = pendingCount == 0;
-    }
+                    UpdateVars();
+                }
+            }
 
-    public void OnFilterSelected(string filter)
-    {
-        appState.Filter = filter;
-    }
+            public void OnCheck(int Id, object Checked)
+            {
+                todoList.ToList<TodoRow>().ForEach(delegate (TodoRow todo)
+                {
+                    if (todo.Id == Id)
+                    {
+                        todo.Status = (bool)Checked ? "completed" : "pending";
+                    }
+                });
 
-    public List<TodoRow> FilteredTodoList()
-    {
-        if (appState.Filter == "active")
-            return todoList.Where(x => x.Status == "pending").ToList();
-        else if (appState.Filter == "completed")
-            return todoList.Where(x => x.Status == "completed").ToList();
+                UpdateVars();
+            }
 
-        return todoList.ToList();
-    }
+            public void OnDelete(int Id)
+            {
+                todoList.Remove(todoList.Single(x => x.Id == Id));
+            }
 
-    public void ClearCompleted()
-    {
-        todoList = todoList.Where(x => x.Status == "pending").ToList();
-    }
+            public void UpdateVars()
+            {
+                int pendingCount = todoList.Where(x => x.Status == "pending").Count();
 
-    public void ToggleComplete()
-    {
-        todoList.ToList<TodoRow>().ForEach(delegate (TodoRow todo)
-        {
-            todo.Status = appState.AllCompleted ? "pending" : "completed";
-        });
+                appState.PendingCount = pendingCount;
+                appState.AllCompleted = pendingCount == 0;
+            }
 
-        UpdateVars();
-    }
+            public void OnFilterSelected(string filter)
+            {
+                appState.Filter = filter;
+            }
 
-}
+            public List<TodoRow> FilteredTodoList()
+            {
+                if (appState.Filter == "active")
+                    return todoList.Where(x => x.Status == "pending").ToList();
+                else if (appState.Filter == "completed")
+                    return todoList.Where(x => x.Status == "completed").ToList();
+
+                return todoList.ToList();
+            }
+
+            public void ClearCompleted()
+            {
+                todoList = todoList.Where(x => x.Status == "pending").ToList();
+            }
+
+            public void ToggleComplete()
+            {
+                todoList.ToList<TodoRow>().ForEach(delegate (TodoRow todo)
+                {
+                    todo.Status = appState.AllCompleted ? "pending" : "completed";
+                });
+
+                UpdateVars();
+            } }
